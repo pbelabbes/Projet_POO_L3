@@ -24,7 +24,11 @@ public abstract class Relation {
 	}
 
 	public String toString() {
-		return (this.schema.getName()+" : "+this.tuples.size()+" tuples");
+		return (this.getName()+" : "+this.tuples.size()+" tuples");
 		
+	}
+	
+	public String getName() {
+		return this.schema.getName();
 	}
 }
