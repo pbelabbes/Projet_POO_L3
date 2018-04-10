@@ -13,10 +13,8 @@ public class Tuple {
 		valeur=listeValeurs;
 	}
 	
-	public String getValue(int colonne){
-		
-		if(colonne<0 || colonne>=valeur.size())		
-		return valeur.get(colonne);
+	public String getValue(int attributes){	
+		return valeur.get(attributes);
 	}
 	
 	
@@ -24,18 +22,16 @@ public class Tuple {
 		return valeur;			
 	}
 	
-	public void setValue(int colonne, String nouvelleValeur) {
-		
-		if(colonne<0 || colonne>=valeur.size())		
-		valeur.set(colonne, nouvelleValeur);
+	public void setValue(int attributes, String nouvelleValeur) {	
+		valeur.set(attributes, nouvelleValeur);
 	}
 	
-	public String toString() {
-		String retour = "Tuple numero"+indice.getIndex()+" :";
-		for(int i=0; i<valeur.size()-1; i++)
-			retour+=valeur.get(i)+"|";
-		retour+=valeur.get(valeur.size()-1);
-		
-		return retour;
-	}
+//	public String toString() {
+//		String retour = "Tuple numero"+indice.getIndex()+" :";
+//		for(int i=0; i<valeur.size()-1; i++)
+//			retour+=valeur.get(i)+"|";
+//		retour+=valeur.get(valeur.size()-1);
+//		
+//		return retour;
+//	}
 }
