@@ -31,6 +31,9 @@ public class TestBasic {
 		la.add(new Attribute("Quantité", "IntegerBD"));
 		la.add(new Attribute("Prix", "DoubleBD"));
 
+		/**
+		 * @todo
+		 */
 		//Création d'un schema
 		
 		//Création de la relation

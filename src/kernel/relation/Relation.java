@@ -18,7 +18,7 @@ public abstract class Relation {
 	
 	public void addTuple(ArrayList<Field> listF) {
 		if (listF.size()==this.schema.getAttributes().size()) {
-			this.tuples.add(new_Tuple(listF,cntTuple));
+			this.tuples.add(new Tuple(cntTuple,listF));
 		}
 			
 	}
