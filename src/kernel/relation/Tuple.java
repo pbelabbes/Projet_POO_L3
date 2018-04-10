@@ -1,22 +1,41 @@
 package kernel.relation;
-import java.util.ArrayList;
+
+import java.util.List;
+
+import jus.util.assertion.Require;
 
 public class Tuple {
+	protected Index indice;
+	protected List<String> valeur;
 	
-
-	private Index index;
-	private ArrayList<Field> fields;
-	
-	
-	public Tuple(ArrayList<Field> fields) {
-		this.index = new Index();
-		this.fields = fields;
+	public Tuple(int indice, List<String> listeValeurs) {
+		this.indice = new Index(indice);
+		valeur=listeValeurs;
 	}
 	
-	// Modifier un champs
+	public String getValue(int colonne){
+		
+		if(colonne<0 || colonne>=valeur.size())		
+		return valeur.get(colonne);
+	}
 	
-	//reset un champs
 	
-	//récupérer la valeur d'un champs
+	public List<String> getValeurs(){		
+		return valeur;			
+	}
 	
+	public void setValue(int colonne, String nouvelleValeur) {
+		
+		if(colonne<0 || colonne>=valeur.size())		
+		valeur.set(colonne, nouvelleValeur);
+	}
+	
+	public String toString() {
+		String retour = "Tuple numero"+indice.getIndex()+" :";
+		for(int i=0; i<valeur.size()-1; i++)
+			retour+=valeur.get(i)+"|";
+		retour+=valeur.get(valeur.size()-1);
+		
+		return retour;
+	}
 }
