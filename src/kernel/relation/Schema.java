@@ -5,6 +5,14 @@ public class Schema {
 
 	private String name;
 	private ArrayList<Attribute> attributes;
+	public ArrayList<Attribute> getAttributes() {
+		return attributes;
+	}
+
+	public void setAttributes(ArrayList<Attribute> attributes) {
+		this.attributes = attributes;
+	}
+
 	private ArrayList<Attribute> primaryKey;
 
 	
@@ -20,7 +28,4 @@ public class Schema {
 		this.primaryKey.add(primaryKey);
 	}
 	
-	public String getName() {
-		return this.name;
-	}
 }
