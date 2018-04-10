@@ -2,14 +2,25 @@ package kernel.relation;
 
 public class Index {
 
-	private int id;
+	private int indice;
 
 	public Index() {
-		this.id = 1; 
+		this.indice = 1; 
 	}
 	
 	
 	public Index(Index bIndex) {
-		this.id = bIndex.id+1;
+		this.indice = bIndex.indice+1;
 	}
+
+
+	public int getIndice() {
+		return indice;
+	}
+
+
+	public void setIndice(int indice) {
+		this.indice = indice;
+	}
+	
 }

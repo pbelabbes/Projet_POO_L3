@@ -1,4 +1,4 @@
-package Noyau;
+package kernel.relation;
 
 import java.util.List;
 
