@@ -2,6 +2,7 @@ package Test;
 
 import kernel.DB;
 import kernel.SGBD;
+import kernel.relation.Relation;
 
 public class TestBasic {
 

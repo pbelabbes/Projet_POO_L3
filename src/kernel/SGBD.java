@@ -2,7 +2,7 @@ package kernel;
 
 import java.util.ArrayList;
 
-import exceptions.DBNotFoundException;
+import exceptions.notFound.DBNotFoundException;
 
 public class SGBD {
 

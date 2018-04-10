@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.notFound;
 
 public class DBNotFoundException extends Exception {
 
