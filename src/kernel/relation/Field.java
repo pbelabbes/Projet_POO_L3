@@ -10,4 +10,9 @@ public class Field {
 		this.Attribute=a;
 //		this.value=value;
 	}
+
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

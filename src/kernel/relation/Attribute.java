@@ -52,4 +52,8 @@ public class Attribute {
 	public Class getType() {
 		return this.type;
 	}
+
+	public String getName() {
+		return this.name;
+	}
 }

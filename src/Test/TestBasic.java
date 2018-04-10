@@ -7,6 +7,7 @@ import kernel.SGBD;
 import kernel.relation.Attribute;
 import kernel.relation.Relation;
 import kernel.relation.Schema;
+import kernel.relation.statefull.FullMemory;
 
 public class TestBasic {
 
@@ -31,22 +32,21 @@ public class TestBasic {
 		la.add(new Attribute("Quantité", "IntegerBD"));
 		la.add(new Attribute("Prix", "DoubleBD"));
 
-		/**
-		 * @todo
-		 */
+		ArrayList<Attribute> pm = new ArrayList<Attribute>();
+		pm.add(la.get(0));
+		pm.add(la.get(1));
+		
 		//Création d'un schema
+		Schema sc = new Schema("Production", la, pm );
 		
 		//Création de la relation
-		db.addRelation(new Relation());
+		db.addRelation(new FullMemory(sc));
 		
 		Relation rel1 = db.getTableByName("Production");
 
 	
-		
-		
-		
-		
-		
+		rel1.displayTable();
+			
 		// Créer la requete : Select producteur, produit, quantité from PRODUCTION 
 		
 		Request r1 = new Request("Projection",rel1).get("producteur","produit","quantite");

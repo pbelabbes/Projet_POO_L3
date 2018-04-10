@@ -30,5 +30,25 @@ public class Schema {
 	public String getName() {
 		return this.name;
 	}
+	
+	public String toString() {
+		String info;
+		info = this.name+"(";
+		for(Attribute a : attributes) {
+			info += a.getName() +":"+a.getType().getSimpleName()+"  ";
+		}
+		
+		return info;
+	}
+
+	public String displayAttributesNames() {
+		String disp="";
+		
+		for(Attribute a : attributes) {
+			disp += a.getName()+"  ";
+		}
+		
+		return disp;
+	}
 
 }
