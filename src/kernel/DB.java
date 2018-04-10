@@ -25,6 +25,15 @@ public class DB {
 	public void deleteRelation(Relation rel) {
 		this.relations.remove(rel);
 	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void showTables() {
+		
+		
+	}
 	
 	
 }
