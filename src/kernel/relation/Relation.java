@@ -8,6 +8,7 @@ public abstract class Relation {
 	private int id;
 	private Schema schema;
 	private ArrayList<Tuple> tuples;
+	private int cntTuple = 0;
 	
 	public Relation(Schema schema) {
 		this.id = ID++;
@@ -15,8 +16,11 @@ public abstract class Relation {
 	
 	}
 	
-	public void addTuple(Tuple new_tuple) {
-		this.tuples.add(new_tuple);
+	public void addTuple(ArrayList<Field> listF) {
+		if (listF.size()==this.schema.getAttributes().size()) {
+			this.tuples.add(new_Tuple(listF,cntTuple));
+		}
+			
 	}
 	
 	public void removeTuple(Tuple old_tuple) {
