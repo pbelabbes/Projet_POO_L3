@@ -4,7 +4,7 @@ public class Index {
 
 	private int indice;
 
-	public Index() {
+	public Index(int indice) {
 		this.indice = 1; 
 	}
 	
