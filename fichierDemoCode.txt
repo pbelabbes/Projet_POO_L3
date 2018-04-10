@@ -3,7 +3,7 @@ public class BD_manager(){
 
 	public static void main(String[] args){
 
-
+		DB db = new Db("FACTORY");
 		//Charge la BD Factory
 		DB db = SGBD.getDbByName("FACTORY");
 		
