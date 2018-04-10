@@ -20,4 +20,7 @@ public class Schema {
 		this.primaryKey.add(primaryKey);
 	}
 	
+	public String getName() {
+		return this.name;
+	}
 }

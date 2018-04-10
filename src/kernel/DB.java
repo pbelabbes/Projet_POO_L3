@@ -31,7 +31,9 @@ public class DB {
 	}
 
 	public void showTables() {
-		
+		for(Relation table : this.relations) {
+			System.out.println(table.toString());
+		}
 		
 	}
 	

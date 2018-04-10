@@ -22,4 +22,9 @@ public abstract class Relation {
 	public void removeTuple(Tuple old_tuple) {
 		this.tuples.remove(old_tuple);
 	}
+
+	public String toString() {
+		return (this.schema.getName()+" : "+this.tuples.size()+" tuples");
+		
+	}
 }
