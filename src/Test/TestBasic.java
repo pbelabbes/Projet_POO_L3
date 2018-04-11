@@ -33,6 +33,7 @@ public class TestBasic {
 		la.add(new Attribute("Prix", "DoubleBD"));
 
 		ArrayList<Attribute> pm = new ArrayList<Attribute>();
+		
 		pm.add(la.get(0));
 		pm.add(la.get(1));
 		
