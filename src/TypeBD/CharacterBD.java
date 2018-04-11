@@ -3,7 +3,7 @@ package TypeBD;
 public class CharacterBD extends TypePrimitif<Character>{
 
 	
-	protected CharacterBD(char v) {
+	public CharacterBD(char v) {
 		super(v);
 	}
 

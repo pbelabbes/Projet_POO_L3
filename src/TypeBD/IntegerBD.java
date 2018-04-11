@@ -2,7 +2,7 @@ package TypeBD;
 
 public class IntegerBD extends TypePrimitif<Integer>{
 
-	protected IntegerBD(int v) {
+	public IntegerBD(int v) {
 		super(v);
 	}
 
