@@ -1,6 +1,10 @@
 package TypeBD;
 
-public class IntegerBD implements TypePrimitif<Integer>{
+public class IntegerBD extends TypePrimitif<Integer>{
+
+	protected IntegerBD(TypePrimitif<Integer> v) {
+		super(v);
+	}
 
 	@Override
 	public boolean equals(Integer o1, Integer o2){

@@ -1,6 +1,10 @@
 package TypeBD;
 
-public class ShortBD implements TypePrimitif<Short> {
+public class ShortBD extends TypePrimitif<Short> {
+
+	protected ShortBD(TypePrimitif<Short> v) {
+		super(v);
+	}
 
 	@Override
 	public int compare(Short o1, Short o2) {

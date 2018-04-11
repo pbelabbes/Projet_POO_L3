@@ -1,12 +1,13 @@
 package TypeBD;
 
 
-public class StringBD implements TypePrimitif<String>{
+public class StringBD extends TypePrimitif<String>{
 
 	protected StringBuffer value;
 	protected int nbCar;
 	
-	public StringBD(int nombreDeCaracteres) {
+	public StringBD(int nombreDeCaracteres,TypePrimitif<String> v) {
+		super(v);
 		nbCar = nombreDeCaracteres;
 		value = new StringBuffer(nombreDeCaracteres);
 	}
