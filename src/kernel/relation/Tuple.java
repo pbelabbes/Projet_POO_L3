@@ -27,11 +27,6 @@ public class Tuple {
 		return valeur;			
 	}
 	
-	public void newTuple(ArrayList<Field>valeur,int cntTuple) {
-		cntTuple=+1;
-		valeur.set(,);
-	}
-	
 	public String toString() {
 		String retour = "Tuple numero"+indice.getIndex()+" :";
 		for(int i=0; i<valeur.size()-1; i++)
