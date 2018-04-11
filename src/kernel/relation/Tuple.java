@@ -19,7 +19,7 @@ public class Tuple {
 		if(attributes<0 || attributes>=valeur.size())
 			throw new Require("Il faut une valeur comprise entre 0 et "+(valeur.size()-1));
 		
-		return valeur.get(attributes);
+		return valeur.get(attributes).toString();
 	}
 	
 	
