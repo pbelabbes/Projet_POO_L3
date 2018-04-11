@@ -70,14 +70,12 @@ public class ParseurXML {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//System.out.println("Relation : " + Relation);
 		return Relation;
 	}
 	
 	
 	// retourne un tableau de nom de relation"
 	public String[] getNomRelations(Scanner sc) {
-		//System.out.println("INnomRelations");
 		List<String> listeRelations = new ArrayList<String>();
 		while(sc.hasNextLine()) {
 			goTo_relationName(sc);
@@ -87,13 +85,11 @@ public class ParseurXML {
 		for(int i=0; i<Relations.length; i++) {
 			Relations[i]=listeRelations.get(i);
 		}
-		//System.out.println("Relations : " + Relations);
 		return Relations;
 	}
 	
 	// retourne une String du format : "Nom\nRelations"
 	public String getBD() {
-		//System.out.println("INbd");
 		String BD = "";
 		try {
 			InputStream s = new FileInputStream(f);
@@ -112,18 +108,17 @@ public class ParseurXML {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//System.out.println("OUTbd");
 		return BD;
 	}
 	
-	//place le Scanner devant le nom suivant si il n'y est pas déjà
+	//place le Scanner devant le nom suivant si il n'y est pas 
 	public void goTo_name(Scanner sc) {
 		if(!sc.hasNext(".*name")) {
 			while(!sc.next().contains("name=")) {
 			}
 		}
 	}
-	//place le Scanner devant le nom suivant si il n'y est pas déjà
+	//place le Scanner devant le nom suivant si il n'y est pas 
 		public void goTo_relationName(Scanner sc) {
 			if(!sc.hasNext(".*\n.*\n.*Relation name")) {
 				while(sc.hasNextLine() && !sc.next().contains("Relation name=")) {
