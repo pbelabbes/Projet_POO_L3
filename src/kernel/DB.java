@@ -12,6 +12,7 @@ public class DB {
 
 	public DB(String name ) {
 		this.name = name;
+		this.relations = new ArrayList<Relation>();
 	}
 
 	public DB(String name, ArrayList<Relation> relations) {
@@ -32,6 +33,7 @@ public class DB {
 	}
 
 	public void showTables() {
+		if(this.relations.isEmpty()) System.out.println("No table in the database");
 		for(Relation table : this.relations) {
 			System.out.println(table.toString());
 		}

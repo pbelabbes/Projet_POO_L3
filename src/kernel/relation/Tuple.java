@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package kernel.relation;
 
 import java.util.ArrayList;
@@ -54,3 +55,54 @@ public class Tuple {
 		return disp;
 	}
 }
+=======
+package kernel.relation;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jus.util.assertion.Require;
+
+public class Tuple {
+	protected Index indice;
+	protected ArrayList<Field> valeur;
+	protected Relation r;
+	
+	public Tuple(Relation r, ArrayList<Field> listeValeurs) {
+		this.r = r;
+		this.indice = new Index(r.getCnt());
+		valeur=listeValeurs;
+	}
+	
+	public String getValue(int attributes){
+		
+		if(attributes<0 || attributes>=valeur.size())
+			throw new Require("Il faut une valeur comprise entre 0 et "+(valeur.size()-1));
+		
+		return valeur.get(attributes).toString();
+	}
+	
+	
+	public ArrayList<Field> getValeurs(){		
+		return valeur;			
+	}
+	
+	public String toString() {
+		String retour = "Tuple numero"+indice.getIndice()+" :";
+		for(int i=0; i<valeur.size()-1; i++)
+			retour+=valeur.get(i)+"|";
+		retour+=valeur.get(valeur.size()-1);
+		
+		return retour;
+	}
+
+	public String displayData() {
+		String disp="";
+		
+		for(Field f : valeur) {
+			disp += f.getValue()+"  ";
+		}
+		return disp;
+	}
+}
+>>>>>>> 00b62458be7ed1695fe034bb7cf30000877a214f

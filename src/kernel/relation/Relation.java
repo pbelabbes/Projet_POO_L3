@@ -23,6 +23,7 @@ public abstract class Relation {
 	public Relation(Schema schema) {
 		this.id = ID++;
 		this.schema = schema;
+		this.tuples = new ArrayList<Tuple>();
 	
 	}
 	
