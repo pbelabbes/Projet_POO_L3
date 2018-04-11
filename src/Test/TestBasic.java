@@ -2,6 +2,7 @@ package Test;
 
 import java.util.ArrayList;
 
+import exceptions.notFound.TypeNotFoundException;
 import kernel.DB;
 import kernel.SGBD;
 import kernel.relation.Attribute;
@@ -15,7 +16,7 @@ public class TestBasic {
 
 		DB db = new DB("FACTORY");
 		SGBD.addDB(db);
-		
+
 		//Charge la BD Factory
 		DB db1 = SGBD.getDbByName("FACTORY");
 
@@ -23,33 +24,36 @@ public class TestBasic {
 		//Affiche les tables de la BD
 		db.showTables();
 
-		
-		//Création d'une liste d'attributs
-		
-		ArrayList<Attribute> la = new ArrayList<Attribute>();
-		la.add(new Attribute("Producteur", "IntegerBD"));
-		la.add(new Attribute("Produit", "StringBD"));
-		la.add(new Attribute("Quantité", "IntegerBD"));
-		la.add(new Attribute("Prix", "DoubleBD"));
 
-		ArrayList<Attribute> pm = new ArrayList<Attribute>();
+		//Création d'une liste d'attributs
+
+		ArrayList<Attribute> la = new ArrayList<Attribute>();
+		try {
+			la.add(new Attribute("Producteur", "IntegerBD"));
+			la.add(new Attribute("Produit", "StringBD"));
+			la.add(new Attribute("Quantité", "IntegerBD"));
+			la.add(new Attribute("Prix", "DoubleBD"));
+
+		} catch (TypeNotFoundException e) {e.printStackTrace();}
 		
+		ArrayList<Attribute> pm = new ArrayList<Attribute>();
+
 		pm.add(la.get(0));
 		pm.add(la.get(1));
-		
+
 		//Création d'un schema
 		Schema sc = new Schema("Production", la, pm );
-		
+
 		//Création de la relation
 		db.addRelation(new FullMemory(sc));
-		
+
 		Relation rel1 = db.getTableByName("Production");
 
-	
+
 		rel1.displayTable();
-			
+
 		// Créer la requete : Select producteur, produit, quantité from PRODUCTION 
-		
+		/*	
 		Request r1 = new Request("Projection",rel1).get("producteur","produit","quantite");
 
 
@@ -80,6 +84,6 @@ public class TestBasic {
 
 
 	}
-}
-}
+}*/
+	}
 }
