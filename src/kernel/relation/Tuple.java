@@ -13,6 +13,10 @@ public class Tuple {
 	protected ArrayList<Field> valeur;
 	protected Relation r;
 	
+	/**
+	 * Methode permettant de definir un tuple
+	 * @return le nom de la relation et la taille de la liste de tuples
+	 */
 	public Tuple(Relation r, ArrayList<Field> listeValeurs) {
 		this.r = r;
 		this.indice = new Index(r.getCnt());
