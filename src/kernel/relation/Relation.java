@@ -1,5 +1,6 @@
 package kernel.relation;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public abstract class Relation {
 	
@@ -18,7 +19,7 @@ public abstract class Relation {
 	
 	public void addTuple(ArrayList<Field> listF) {
 		if (listF.size()==this.schema.getAttributes().size()) {
-			this.tuples.add(new_Tuple(listF,cntTuple));
+			this.tuples.add(new Tuple(cntTuple,listF));
 		}
 			
 	}
@@ -34,5 +35,15 @@ public abstract class Relation {
 	
 	public String getName() {
 		return this.schema.getName();
+	}
+
+	public void displayTable() {
+		System.out.println(this.schema.toString());
+		System.out.println("with "+this.tuples.size()+" tuples");
+		System.out.println(this.schema.displayAttributesNames());
+		for(Tuple t : tuples) {
+			System.out.println(t.displayData());
+		}
+		
 	}
 }

@@ -1,13 +1,22 @@
 package kernel.relation;
 import javax.xml.bind.TypeConstraintException;
 
-public class Field {
+import TypeBD.TypePrimitif;
+import exceptions.different.DifferentTypeException;
 
-	private Attribute Attribute;
-//	private Type value; ERROR, PAS LA BONNE METHODE
+public class Field<T> {
+
+	private Attribute attribute;
+	private TypePrimitif<T> value;
 	
-	public Field(Attribute a, Type value) {
-		this.Attribute=a;
-//		this.value=value;
+	public Field(Attribute a, TypePrimitif<T> value) throws DifferentTypeException {
+		this.attribute=a;
+		
+		if( value.getClass() != attribute.getClass()) throw new DifferentTypeException();
+		this.value=value;
+	}
+
+	public TypePrimitif<T> getValue() {
+		return this.value;
 	}
 }

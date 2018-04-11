@@ -40,4 +40,13 @@ public class Tuple {
 		
 		return retour;
 	}
+
+	public String displayData() {
+		String disp="";
+		
+		for(Field f : valeur) {
+			disp += f.getValue();
+		}
+		return disp;
+	}
 }
