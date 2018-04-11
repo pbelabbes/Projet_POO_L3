@@ -32,7 +32,7 @@ public abstract class Relation {
 	 */
 	public void addTuple(ArrayList<Field> listF) {
 		if (listF.size()==this.schema.getAttributes().size()) {
-			this.tuples.add(new Tuple(cntTuple,listF));
+			this.tuples.add(new Tuple(this,listF));
 		}
 			
 	}
@@ -77,5 +77,13 @@ public abstract class Relation {
 			System.out.println(t.displayData());
 		}
 		
+	}
+
+	public Attribute getAttributeByName(String name) {
+		return this.schema.getAttributesByName(name);
+	}
+
+	public int getCnt() {
+		return this.cntTuple;
 	}
 }

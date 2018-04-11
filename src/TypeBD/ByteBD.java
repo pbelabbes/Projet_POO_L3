@@ -1,6 +1,10 @@
 package TypeBD;
 
-public class ByteBD implements TypePrimitif<Byte> {
+public class ByteBD extends TypePrimitif<Byte> {
+
+	public ByteBD(byte v) {
+		super(v);
+	}
 
 	@Override
 	public int compare(Byte o1, Byte o2) {

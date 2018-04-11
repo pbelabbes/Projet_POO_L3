@@ -1,6 +1,10 @@
 package TypeBD;
 
-public class LongBD implements TypePrimitif<Long>{
+public class LongBD extends TypePrimitif<Long>{
+
+	public LongBD(long v) {
+		super(v);
+	}
 
 	@Override
 	public int compare(Long o1, Long o2) {

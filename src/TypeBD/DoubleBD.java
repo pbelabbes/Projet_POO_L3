@@ -1,6 +1,10 @@
 package TypeBD;
 
-public class DoubleBD implements TypePrimitif<Double>{
+public class DoubleBD extends TypePrimitif<Double>{
+
+	public DoubleBD(double v) {
+		super(v);
+	}
 
 	@Override
 	public int compare(Double o1, Double o2) {

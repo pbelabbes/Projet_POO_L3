@@ -1,6 +1,10 @@
 package TypeBD;
 
-public class FloatBD implements TypePrimitif<Float>{
+public class FloatBD extends TypePrimitif<Float>{
+
+	public FloatBD(float v) {
+		super(v);
+	}
 
 	@Override
 	public int compare(Float o1, Float o2) {

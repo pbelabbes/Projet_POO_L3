@@ -8,9 +8,11 @@ import jus.util.assertion.Require;
 public class Tuple {
 	protected Index indice;
 	protected ArrayList<Field> valeur;
+	protected Relation r;
 	
-	public Tuple(int indice, ArrayList<Field> listeValeurs) {
-		this.indice = new Index(indice);
+	public Tuple(Relation r, ArrayList<Field> listeValeurs) {
+		this.r = r;
+		this.indice = new Index(r.getCnt());
 		valeur=listeValeurs;
 	}
 	
