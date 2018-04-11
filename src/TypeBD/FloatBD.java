@@ -2,7 +2,7 @@ package TypeBD;
 
 public class FloatBD extends TypePrimitif<Float>{
 
-	protected FloatBD(TypePrimitif<Float> v) {
+	protected FloatBD(float v) {
 		super(v);
 	}
 

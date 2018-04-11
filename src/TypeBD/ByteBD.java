@@ -2,7 +2,7 @@ package TypeBD;
 
 public class ByteBD extends TypePrimitif<Byte> {
 
-	protected ByteBD(TypePrimitif<Byte> v) {
+	protected ByteBD(byte v) {
 		super(v);
 	}
 

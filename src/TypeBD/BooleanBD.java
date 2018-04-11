@@ -3,7 +3,7 @@ package TypeBD;
 public class BooleanBD extends TypePrimitif<Boolean> {
 
 	
-	public BooleanBD(TypePrimitif<Boolean> v) {
+	public BooleanBD(boolean v) {
 		super(v);
 	}
 

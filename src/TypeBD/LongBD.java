@@ -2,7 +2,7 @@ package TypeBD;
 
 public class LongBD extends TypePrimitif<Long>{
 
-	protected LongBD(TypePrimitif<Long> v) {
+	protected LongBD(long v) {
 		super(v);
 	}
 

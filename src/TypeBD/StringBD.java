@@ -6,7 +6,7 @@ public class StringBD extends TypePrimitif<String>{
 	protected StringBuffer value;
 	protected int nbCar;
 	
-	public StringBD(int nombreDeCaracteres,TypePrimitif<String> v) {
+	public StringBD(int nombreDeCaracteres,String v) {
 		super(v);
 		nbCar = nombreDeCaracteres;
 		value = new StringBuffer(nombreDeCaracteres);

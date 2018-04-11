@@ -10,10 +10,10 @@ import java.util.Comparator;
 public abstract class TypePrimitif <T> implements Comparator<T>{
 	
 	
-	protected TypePrimitif<T> value;
+	protected Object value;
 	
 	
-	protected TypePrimitif(TypePrimitif<T> v){
+	protected TypePrimitif(Object v){
 		this.value = v;
 	}
 	/**
