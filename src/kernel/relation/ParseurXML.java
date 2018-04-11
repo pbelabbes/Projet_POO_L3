@@ -1,4 +1,4 @@
-package Noyau;
+package kernel.relation;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
