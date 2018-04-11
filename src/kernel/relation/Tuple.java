@@ -28,7 +28,7 @@ public class Tuple {
 	}
 	
 	public String toString() {
-		String retour = "Tuple numero"+indice.getIndex()+" :";
+		String retour = "Tuple numero"+indice.getIndice()+" :";
 		for(int i=0; i<valeur.size()-1; i++)
 			retour+=valeur.get(i)+"|";
 		retour+=valeur.get(valeur.size()-1);
