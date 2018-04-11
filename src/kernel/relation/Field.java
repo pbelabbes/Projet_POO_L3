@@ -16,7 +16,7 @@ public class Field<T> {
 	
 
 	/**
-	 * Methode permettant de definir qu'un field est lié a un attribut et  a un type primitif
+	 * Methode permettant de definir qu'un field est liï¿½ a un attribut et  a un type primitif
 	 * @param a de type Attribute
 	 * @param value de type TypePrimitif<T>
 	 * @throws DifferentTypeException au cas ou le type est invalide
@@ -24,7 +24,7 @@ public class Field<T> {
 	public Field(Attribute a, TypePrimitif<T> value) throws DifferentTypeException {
 		this.attribute=a;
 		
-		if( value.getClass() != attribute.getClass()) throw new DifferentTypeException();
+//		if( value.getClass() != attribute.getClass()) throw new DifferentTypeException();
 		this.value=value;
 	}
 

@@ -35,7 +35,7 @@ public class TestBasic {
 		try {
 			la.add(new Attribute("Producteur", "IntegerBD"));
 			la.add(new Attribute("Produit", "StringBD"));
-			la.add(new Attribute("Quantité", "IntegerBD"));
+			la.add(new Attribute("Quantite", "IntegerBD"));
 			la.add(new Attribute("Prix", "DoubleBD"));
 
 		} catch (TypeNotFoundException e) {e.printStackTrace();}
