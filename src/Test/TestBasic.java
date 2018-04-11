@@ -2,12 +2,16 @@ package Test;
 
 import java.util.ArrayList;
 
+import TypeBD.*;
+import exceptions.different.DifferentTypeException;
 import exceptions.notFound.TypeNotFoundException;
 import kernel.DB;
 import kernel.SGBD;
 import kernel.relation.Attribute;
+import kernel.relation.Field;
 import kernel.relation.Relation;
 import kernel.relation.Schema;
+import kernel.relation.Tuple;
 import kernel.relation.statefull.FullMemory;
 
 public class TestBasic {
@@ -35,7 +39,9 @@ public class TestBasic {
 			la.add(new Attribute("Prix", "DoubleBD"));
 
 		} catch (TypeNotFoundException e) {e.printStackTrace();}
-		
+
+
+		//Creation de la clé primaire
 		ArrayList<Attribute> pm = new ArrayList<Attribute>();
 
 		pm.add(la.get(0));
@@ -47,11 +53,57 @@ public class TestBasic {
 		//Création de la relation
 		db.addRelation(new FullMemory(sc));
 
+		//Récupération d'une table par son nom
 		Relation rel1 = db.getTableByName("Production");
 
 
+		//Affichage de la rable
 		rel1.displayTable();
 
+
+
+		ArrayList<Field> ft1 = new ArrayList<Field>();
+		ArrayList<Field> ft2 = new ArrayList<Field>();
+		ArrayList<Field> ft3 = new ArrayList<Field>();
+		ArrayList<Field> ft4 = new ArrayList<Field>();
+
+		try {
+			ft1.add(new Field ( rel1.getAttributeByName("Producteur"),new IntegerBD(1) ));
+			//t1
+			ft2.add(new Field ( rel1.getAttributeByName("Producteur"),new IntegerBD(2) )); //t2
+			ft3.add(new Field ( rel1.getAttributeByName("Producteur"),new IntegerBD(3) )); //t3
+			ft4.add(new Field ( rel1.getAttributeByName("Producteur"),new IntegerBD(3) )); //t4
+
+			ft1.add(new Field ( rel1.getAttributeByName("Produit"),new StringBD("Epeautre") )); //t1
+			ft2.add(new Field ( rel1.getAttributeByName("Produit"),new StringBD("Avoine") )); //t2
+			ft3.add(new Field ( rel1.getAttributeByName("Produit"),new StringBD("Mais") )); //t3
+			ft4.add(new Field ( rel1.getAttributeByName("Produit"),new StringBD("Epeautre") )); //t4
+
+			ft1.add(new Field ( rel1.getAttributeByName("Quantite"),new IntegerBD(10) )); //t1
+			ft2.add(new Field ( rel1.getAttributeByName("Quantite"),new IntegerBD(150) )); //t2
+			ft3.add(new Field ( rel1.getAttributeByName("Quantite"),new IntegerBD(10) )); //t3
+			ft4.add(new Field ( rel1.getAttributeByName("Quantite"),new IntegerBD(10) )); //t4
+
+			ft1.add(new Field ( rel1.getAttributeByName("Prix"),new DoubleBD(3.56) )); //t1
+			ft2.add(new Field ( rel1.getAttributeByName("Prix"),new DoubleBD(2.37) )); //t2
+			ft3.add(new Field ( rel1.getAttributeByName("Prix"),new DoubleBD(9.12) )); //t3
+			ft4.add(new Field ( rel1.getAttributeByName("Prix"),new DoubleBD(2.99) )); //t4
+		} catch (DifferentTypeException e) {
+			e.printStackTrace();
+		}
+
+
+		//Insertion de tuple dans la table
+		rel1.addTuple(ft1);
+		rel1.addTuple(ft2);
+		rel1.addTuple(ft3);
+		rel1.addTuple(ft4);
+
+
+		//Afficher la table 
+		rel1.displayTable();
+		
+		
 		// Créer la requete : Select producteur, produit, quantité from PRODUCTION 
 		/*	
 		Request r1 = new Request("Projection",rel1).get("producteur","produit","quantite");

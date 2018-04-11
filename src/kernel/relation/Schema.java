@@ -1,6 +1,8 @@
 package kernel.relation;
 import java.util.ArrayList;
 
+import javax.management.AttributeNotFoundException;
+
 public class Schema {
 
 	private String name;
@@ -49,6 +51,21 @@ public class Schema {
 		}
 		
 		return disp;
+	}
+
+	public Attribute getAttributesByName(String name) {
+		Attribute res =null;
+		for(Attribute a: attributes) {
+			if(a.getName() == name) res = a;
+		}
+		
+		if(res == null)
+			try {
+				throw new AttributeNotFoundException();
+			} catch (AttributeNotFoundException e) {
+				e.printStackTrace();
+			}
+		return res;
 	}
 
 }
