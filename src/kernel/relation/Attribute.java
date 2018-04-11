@@ -17,9 +17,9 @@ public class Attribute {
 	 * Methode permettant de definir un attribut par son nom et son type
 	 * @param name de type string
 	 * @param type de type string
-	 * @throws TypeNotFoundException au cas ou le type entré ne correspond pas un type primitif defini
+	 * @throws TypeNotFoundException au cas ou le type entrï¿½ ne correspond pas un type primitif defini
 	 */
-	public Attribute(String name,String type) throws TypeNotFoundException {
+	public Attribute(String name,String type) {
 		this.name = name;
 
 
@@ -53,7 +53,10 @@ public class Attribute {
 			break;
 
 		default:
-			throw new TypeNotFoundException();
+			try {
+				throw new TypeNotFoundException();
+			} catch (TypeNotFoundException e) {	}
+			
 		}
 		
 	}

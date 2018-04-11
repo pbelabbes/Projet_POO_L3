@@ -25,5 +25,10 @@ public abstract class TypePrimitif <T> implements Comparator<T>{
 	public abstract boolean equals(T o1, T o2);
 	
 	public abstract String toString2();
+	
+	public Object getValue() {
+		return this.value;
+	}
+	
 }
 

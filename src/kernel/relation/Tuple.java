@@ -42,7 +42,7 @@ public class Tuple {
 		String disp="";
 		
 		for(Field f : valeur) {
-			disp += f.getValue();
+			disp += f.getValue()+"  ";
 		}
 		return disp;
 	}

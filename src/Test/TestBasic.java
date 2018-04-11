@@ -32,13 +32,10 @@ public class TestBasic {
 		//Création d'une liste d'attributs
 
 		ArrayList<Attribute> la = new ArrayList<Attribute>();
-		try {
-			la.add(new Attribute("Producteur", "IntegerBD"));
-			la.add(new Attribute("Produit", "StringBD"));
-			la.add(new Attribute("Quantite", "IntegerBD"));
-			la.add(new Attribute("Prix", "DoubleBD"));
-
-		} catch (TypeNotFoundException e) {e.printStackTrace();}
+		la.add(new Attribute("Producteur", "IntegerBD"));
+		la.add(new Attribute("Produit", "StringBD"));
+		la.add(new Attribute("Quantite", "IntegerBD"));
+		la.add(new Attribute("Prix", "DoubleBD"));
 
 
 		//Creation de la clé primaire
@@ -88,9 +85,7 @@ public class TestBasic {
 			ft2.add(new Field ( rel1.getAttributeByName("Prix"),new DoubleBD(2.37) )); //t2
 			ft3.add(new Field ( rel1.getAttributeByName("Prix"),new DoubleBD(9.12) )); //t3
 			ft4.add(new Field ( rel1.getAttributeByName("Prix"),new DoubleBD(2.99) )); //t4
-		} catch (DifferentTypeException e) {
-			e.printStackTrace();
-		}
+		} catch (DifferentTypeException e) {}
 
 
 		//Insertion de tuple dans la table
@@ -102,8 +97,8 @@ public class TestBasic {
 
 		//Afficher la table 
 		rel1.displayTable();
-		
-		
+
+
 		// Créer la requete : Select producteur, produit, quantité from PRODUCTION 
 		/*	
 		Request r1 = new Request("Projection",rel1).get("producteur","produit","quantite");
@@ -116,7 +111,7 @@ public class TestBasic {
 
 		// Créer la requete : Select * from PRODUCTION where produit = "Epeautre"
 
-		Request r3 = new Request("Selection",rel1,"produit","=","Epeautre");
+		Request r3 = new Request("Selection",rel1).where("produit","=","Epeautre");
 
 		// Créer la requete : Select * from PRODUCTEUR inner join PRODUCTION on PRODUCTION.producteur = PRODUCTEUR.id_producteur ; 
 

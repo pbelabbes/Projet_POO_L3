@@ -32,7 +32,7 @@ public class Field<T> {
 	 * Methode permettant de recuperer le type primitif
 	 * @return value de type TypePrimitif<T>
 	 */
-	public TypePrimitif<T> getValue() {
-		return this.value;
+	public Object getValue() {
+		return this.value.getValue();
 	}
 }
