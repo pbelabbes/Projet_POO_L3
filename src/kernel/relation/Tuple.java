@@ -5,6 +5,9 @@ import java.util.List;
 
 import jus.util.assertion.Require;
 
+/**
+ * Classe structurant les tuples
+ */
 public class Tuple {
 	protected Index indice;
 	protected ArrayList<Field> valeur;
