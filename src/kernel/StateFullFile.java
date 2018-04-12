@@ -13,8 +13,12 @@ import java.util.List;
 
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.Schema;
 
+<<<<<<< HEAD
 import TypeDB.ByteBD;
 import TypeDB.*;
+=======
+import TypeBD.*;
+>>>>>>> b8d7f8197bebbfc83f471ed35a4ba6bcd9099d3b
 import kernel.relation.Attribute;
 import kernel.relation.Index;
 

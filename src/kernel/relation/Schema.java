@@ -48,6 +48,7 @@ public class Schema {
 	public Schema(String name, ArrayList<Attribute> attributes, Attribute primaryKey) {
 		this.name=name;
 		this.attributes=attributes;
+		this.primaryKey = new ArrayList<Attribute>();
 		this.primaryKey.add(primaryKey);
 	}
 	

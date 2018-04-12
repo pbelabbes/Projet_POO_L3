@@ -27,6 +27,11 @@ public class Field<T> {
 //		if( value.getClass() != attribute.getClass()) throw new DifferentTypeException();
 		this.value=value;
 	}
+	
+	public Field(Field f,Attribute a) {
+		this.attribute = a;
+		this.value = f.value;
+	}
 
 	/**
 	 * Methode permettant de recuperer le type primitif
@@ -34,5 +39,13 @@ public class Field<T> {
 	 */
 	public Object getValue() {
 		return this.value.getValue();
+	}
+	
+	public TypePrimitif<T> getType(){
+		return this.value;
+	}
+
+	public Attribute getAttribut() {
+		return this.attribute;
 	}
 }
