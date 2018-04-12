@@ -5,7 +5,7 @@ import exceptions.notFound.TypeNotFoundException;
 
 /**
  * Classe de structure des attributs
- * @author leoso
+ * 
  */
 public class Attribute {
 
@@ -83,3 +83,4 @@ public class Attribute {
 		return this.name;
 	}
 }
+

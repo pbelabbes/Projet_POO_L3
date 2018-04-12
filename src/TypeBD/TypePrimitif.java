@@ -31,6 +31,4 @@ public abstract class TypePrimitif <T> implements Comparator<T>{
 	}
 	
 	
-	
 }
-

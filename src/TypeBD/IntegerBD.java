@@ -18,8 +18,4 @@ public class IntegerBD extends TypePrimitif<Integer>{
 	public String toString2() {
 		return "IntegerBD";
 	}
-	
-	public Class getJType() {
-		return Integer.class;
-	}
 }
