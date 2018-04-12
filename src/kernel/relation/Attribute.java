@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package kernel.relation;
 
 import TypeDB.*;
@@ -74,6 +75,8 @@ public class Attribute {
 	}
 }
 =======
+=======
+>>>>>>> 87d0fa65795f09ad64b66623e76eb8626d41a016
 package kernel.relation;
 
 import TypeBD.*;

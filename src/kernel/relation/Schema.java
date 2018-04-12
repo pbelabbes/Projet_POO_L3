@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 import javax.management.AttributeNotFoundException;
 
+import kernel.relation.operator.Request;
+
 public class Schema {
 
 	private String name;
@@ -28,7 +30,7 @@ public class Schema {
 	private ArrayList<Attribute> primaryKey;
 
 	/**
-	 * methode permettant de definir un attribut comme clé primaire
+	 * methode permettant de definir un attribut comme clï¿½ primaire
 	 * @param name de type String
 	 * @param attributes de type ArrayList<Attribute>
 	 * @param primaryKey de type ArrayList<Attribute>
@@ -40,7 +42,7 @@ public class Schema {
 	}
 	
 	/**
-	 * methode permettant de definir la clé primaire
+	 * methode permettant de definir la clï¿½ primaire
 	 * @param name de type String
 	 * @param attributes de type ArrayList<Attribute>
 	 * @param primaryKey de type ArrayList<Attribute>
@@ -51,6 +53,15 @@ public class Schema {
 		this.primaryKey = new ArrayList<Attribute>();
 		this.primaryKey.add(primaryKey);
 	}
+
+	public Schema(Schema schema,Request r) {
+		this.name=name+r.getId();
+		this.attributes=schema.attributes;
+		this.primaryKey = r.getRelation().getPM();
+
+	}
+
+
 	
 	/**
 	 * methode permettant de recuperer le nom de la relation
@@ -106,6 +117,10 @@ public class Schema {
 				e.printStackTrace();
 			}
 		return res;
+	}
+
+	public ArrayList<Attribute> getPM() {
+		return this.primaryKey;
 	}
 
 }

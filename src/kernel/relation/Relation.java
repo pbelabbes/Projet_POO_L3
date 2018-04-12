@@ -37,7 +37,7 @@ public abstract class Relation {
 		if (listF.size()==this.schema.getAttributes().size()) {
 			this.tuples.add(new Tuple(this,listF));
 		}
-		
+
 		this.cntTuple++;
 
 	}
@@ -108,5 +108,14 @@ public abstract class Relation {
 
 	public ArrayList<Tuple> getTuples() {
 		return this.tuples;
+	}
+
+	public Schema getSchema() {
+		return this.schema;
+	}
+
+	public ArrayList<Attribute> getPM() {
+
+		return this.schema.getPM();
 	}
 }

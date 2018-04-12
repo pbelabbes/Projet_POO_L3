@@ -12,10 +12,10 @@ import kernel.relation.Field;
 import kernel.relation.Relation;
 import kernel.relation.Schema;
 import kernel.relation.Tuple;
-import kernel.relation.operator.Request;
 import kernel.relation.statefull.FullMemory;
-
+import kernel.relation.operator.*;
 public class TestBasic {
+
 
 	public static void main(String[] args) {
 
@@ -117,6 +117,10 @@ public class TestBasic {
 		System.out.println("Affichage de la table créée");
 		rel3.displayTable();
 		
+		
+		Relation rel4= new Request("select",rel1).where(rel1.getAttributeByName("Produit"),Operator.EQ,"Epeautre").execute();
+		
+		rel4.displayTable();
 		
 		/*
 		// Ordonner la dernière requete par nom de produit
