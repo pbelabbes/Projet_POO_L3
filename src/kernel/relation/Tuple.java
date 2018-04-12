@@ -7,28 +7,45 @@ import javax.management.AttributeNotFoundException;
 
 import jus.util.assertion.Require;
 
+/**
+ * Classe structurant les tuples
+ */
 public class Tuple {
 	protected Index indice;
 	protected ArrayList<Field> valeur;
 	protected Relation r;
 
+	/**
+	 * Methode permettant de definir un tuple et initialise le compteur de tuple
+	 */
 	public Tuple(Relation r, ArrayList<Field> listeValeurs) {
 		this.r = r;
 		this.indice = new Index(r.getCnt());
 		valeur=listeValeurs;
 	}
 
+	/**
+	 * Methode permettant de recup les valeur correspondant  a un attribut
+	 */
 	public Tuple(Tuple t) {
 		this.r = null;
 		this.valeur = t.valeur;
 		this.indice = null;
 	}
 
+	/**
+	 * Methode permettant de recup les valeurs d'un field
+	 * @return valeur
+	 */
 	public void setRelation(Relation r) {
 		this.r = r;
 		this.indice = new Index(r.getCnt());
 	}
 
+	/**
+	 * Methode permettant de recup l'indice de la valeur dans l'index
+	 * @return retour
+	 */
 	public String getValue(int attributes){
 
 		if(attributes<0 || attributes>=valeur.size())
@@ -65,6 +82,10 @@ public class Tuple {
 		return retour;
 	}
 
+	/**
+	 * Methode permettant de recup la valeur enregistrer dans le tuple
+	 * @return disp
+	 */
 	public String displayData() {
 		String disp="";
 
@@ -79,4 +100,3 @@ public class Tuple {
 		return this.getValeurs();
 	}
 }
-

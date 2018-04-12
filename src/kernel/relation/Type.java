@@ -1,5 +1,8 @@
 package kernel.relation;
 
+/**
+ * Classe definissant la structure des Types
+ */
 public abstract class Type {
 
 	public static int ID=0;
