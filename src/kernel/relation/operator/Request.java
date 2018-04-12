@@ -16,17 +16,41 @@ import kernel.relation.stateless.Unary;
 
 public class Request {
 
+	/**
+	 * Counter of request
+	 */
 	private static int CNT = 1;
 
+	/**
+	 * ID of the request
+	 */
 	private int id;
+	
+	/**
+	 * operation ( "select","projection" etc. )
+	 */
 	private String op;
 
+	/**
+	 * Origin relation
+	 */
 	private Relation oldR;
 
+	/**
+	 * new relation's schema
+	 */
 	private Schema newSc;
+	
+	/**
+	 * Argument of the operation 
+	 */
 	private ArrayList<Object> args;
 
-
+	/**
+	 * 
+	 * @param op, type of operation
+	 * @param r, Request based relation
+	 */
 	public Request(String op, Relation r) {
 		this.args = new ArrayList<Object>();
 		this.op = op;
@@ -36,6 +60,11 @@ public class Request {
 
 	}
 
+	/**
+	 * 
+	 * @param params, names of attributes that we want keep in the projection
+	 * @return 
+	 */
 	public Request get(String [] params) {
 
 		this.args = new ArrayList<Object>();
@@ -51,7 +80,13 @@ public class Request {
 		return this;
 	}
 
-
+	/**
+	 * 
+	 * @param a, attribute that we will check
+	 * @param operator, type of operation ( EQ,LT,LET,GT,GET,DIFF )
+	 * @param o , operand
+	 * @return
+	 */
 	public <T> Request where(Attribute a, Operator operator, T o ) {
 
 		if(a != this.oldR.getAttributeByName(a.getName()))
@@ -68,6 +103,11 @@ public class Request {
 		return this;
 	}
 
+	/**
+	 * 
+	 * @param nr, Origin table for the projection
+	 * @return new Relation
+	 */
 	public Relation projection(Relation nr) {
 		if(newSc == null) {
 			newSc = new Schema(oldR.getSchema(),this);
@@ -99,6 +139,11 @@ public class Request {
 		return nr;
 	}
 	
+	/**
+	 * 
+	 * @param nr, origin table for the selection
+	 * @return
+	 */
 	private Relation selection(Relation nr) {
 		nr = new Unary(newSc);
 		
@@ -122,6 +167,10 @@ public class Request {
 		return nr;
 	}
 	
+	/**
+	 * Execution of the request
+	 * @return the new relation
+	 */
 	public Relation execute() {
 		Relation nr = null;
 		switch (op) {
