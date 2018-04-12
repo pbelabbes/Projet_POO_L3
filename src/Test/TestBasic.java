@@ -12,6 +12,7 @@ import kernel.relation.Field;
 import kernel.relation.Relation;
 import kernel.relation.Schema;
 import kernel.relation.Tuple;
+import kernel.relation.operator.Request;
 import kernel.relation.statefull.FullMemory;
 
 public class TestBasic {
@@ -88,6 +89,9 @@ public class TestBasic {
 		} catch (DifferentTypeException e) {}
 
 
+		System.out.println("TypePrimitif<T>)f.getValue()" + ft1.get(0).getValue().getClass());
+
+
 		//Insertion de tuple dans la table
 		rel1.addTuple(ft1);
 		rel1.addTuple(ft2);
@@ -100,10 +104,21 @@ public class TestBasic {
 
 
 		// Créer la requete : Select producteur, produit, quantité from PRODUCTION 
-		/*	
-		Request r1 = new Request("Projection",rel1).get("producteur","produit","quantite");
 
+		System.out.println("Préparation de la selection");
+		String [] att = {"Producteur","Produit","Quantite"};
+		
+		System.out.println("Creation de la requete");
+		Request r1 = new Request("projection",rel1).get(att);
 
+		System.out.println("Exectution de la requete");
+		Relation rel3 = r1.execute();
+		
+		System.out.println("Affichage de la table créée");
+		rel3.displayTable();
+		
+		
+		/*
 		// Ordonner la dernière requete par nom de produit
 
 		Request r2 = new Request(r1).orderBy("produit","asc");

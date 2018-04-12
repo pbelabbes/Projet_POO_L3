@@ -30,5 +30,7 @@ public abstract class TypePrimitif <T> implements Comparator<T>{
 		return this.value;
 	}
 	
+	
+	
 }
 

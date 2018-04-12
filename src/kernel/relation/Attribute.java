@@ -60,7 +60,13 @@ public class Attribute {
 		}
 		
 	}
-
+	
+	public Attribute(Attribute a) {
+		this.name=a.getName();
+		this.type=a.getType();
+	}
+	
+	
 	/**
 	 * Methode permettant de recuperer le type de l'attribut
 	 * @return type de type Type
