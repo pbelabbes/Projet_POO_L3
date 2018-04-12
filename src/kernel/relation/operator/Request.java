@@ -188,10 +188,18 @@ public class Request {
 		return nr;
 	}
 
+	/**
+	 * 
+	 * @return the ID of the request
+	 */
 	public int getId() {
 		return this.id;
 	}
 
+	/**
+	 * 
+	 * @return the origin relation of the request
+	 */
 	public Relation getRelation() {
 		return this.oldR;
 	}

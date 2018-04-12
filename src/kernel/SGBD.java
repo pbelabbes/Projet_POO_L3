@@ -6,6 +6,9 @@ import exceptions.notFound.DBNotFoundException;
 
 public class SGBD {
 
+	/**
+	 * List of database
+	 */
 	private static ArrayList<DB> DBs = new ArrayList<DB>();
 
 	/**
@@ -28,6 +31,11 @@ public class SGBD {
 
 	return res;
 }
+	
+	/**
+	 * 
+	 * @param new_database
+	 */
 public static void addDB(DB new_database) {
 	DBs.add(new_database);
 }
