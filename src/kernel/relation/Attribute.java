@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package kernel.relation;
 
 import TypeDB.*;
@@ -85,9 +84,18 @@ import exceptions.notFound.TypeNotFoundException;
  * 
  */
 public class Attribute {
-
+	
+	/**
+	  * Un String à visibilité Privee
+	  */
 	private String name;
+	/**
+	  * Un type class à visibilité Privee
+	  */
 	private Class type;
+	/**
+	  * Un Attribute à visibilité Privee
+	  */
 	private Attribute foreignKey;
 
 	/**
@@ -161,4 +169,3 @@ public class Attribute {
 	}
 }
 
->>>>>>> b8d7f8197bebbfc83f471ed35a4ba6bcd9099d3b
