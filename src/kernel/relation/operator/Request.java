@@ -21,116 +21,131 @@ public class Request {
 	private int id;
 	private String op;
 
-	private Relation r;
+	private Relation oldR;
 
-	private Schema sc;
-	private ArrayList<String> args;
+	private Schema newSc;
+	private ArrayList<Object> args;
 
 
 	public Request(String op, Relation r) {
+		this.args = new ArrayList<Object>();
 		this.op = op;
-		this.r = r;
+		this.oldR = r;
 		this.id = CNT++;
-		this.sc = null;
+		this.newSc = null;
 
 	}
 
 	public Request get(String [] params) {
+
+		this.args = new ArrayList<Object>();
 		Attribute pm = new Attribute("id","IntegerBD");
 		ArrayList<Attribute> as = new ArrayList<Attribute>();
 		as.add(pm);
 		for(String s : params) {
-			as.add(new Attribute(r.getAttributeByName(s)));
+			as.add(new Attribute(oldR.getAttributeByName(s)));
 		}
 
-		this.sc = new Schema(this.op + ":"+this.r.getName()+"-"+this.id, as, pm);
+		this.newSc = new Schema(this.op + ":"+this.oldR.getName()+"-"+this.id, as, pm);
 
 		return this;
 	}
 
-	public <T> Request when(Attribute a, Operator operator, T o ) {
 
-		if(a != this.r.getAttributeByName(a.getName()))
+	public <T> Request where(Attribute a, Operator operator, T o ) {
+
+		if(a != this.oldR.getAttributeByName(a.getName()))
 			try {
 				throw new DifferentAttributeException();
 			} catch (DifferentAttributeException e) {
 				e.printStackTrace();
 			}
-
-		switch (operator) {
-		case EQ:
-			for(Tuple t: r.getTuples()) {
-				for(Field f : t.getFields()) {
-					if(f.getType().equals(f.getValue(),o)) {
-						//this.newTuples.add(t);
-					}
-				}
-			}
-			break;
-
-		default:
-			break;
-		}
-
-
-
-
-		//		if(o instanceof Attribute) {
-		//			
-		//			r.attributeExist((Attribute) o);
-		//			switch (Operator) {
-		//			case EQ:
-		//				for(Tuple t: r.getTuples()) {
-		//					for(Field f : t.getFields()) {
-		//						if(f.getValue() == r.)
-		//					}
-		//				}
-		//				break;
-		//
-		//			default:
-		//				break;
-		//			}
-		//		}
-
+		
+		this.args.add(a);
+		this.args.add(operator);
+		this.args.add(o);
 
 		return this;
 	}
 
+	public Relation projection(Relation nr) {
+		if(newSc == null) {
+			newSc = new Schema(oldR.getSchema(),this);
+		}
+		nr = new Unary(newSc);
+		for(Tuple t : oldR.getTuples()) {
+			ArrayList<Field> lf = new ArrayList<Field>();
+			try {
+				lf.add(new Field(newSc.getAttributesByName("id"),new IntegerBD(nr.getCnt() )));
+			} catch (DifferentTypeException e) {
+				e.printStackTrace();
+			}
+
+			for(Attribute a : newSc.getAttributes()) {
+
+				if(t.getFieldByAttribute(a) != null) {
+
+
+					Field f = null;
+
+					f = new Field(t.getFieldByAttribute(a),a);
+					lf.add(f);
+				}
+			}
+
+			nr.addTuple(lf);
+		}
+		
+		return nr;
+	}
+	
+	private Relation selection(Relation nr) {
+		nr = new Unary(newSc);
+		
+		for (Tuple t : oldR.getTuples()) {
+			Field f = t.getFieldByAttribute((Attribute) args.get(0));
+			
+			switch ((Operator)this.args.get(1)) {
+			case EQ:
+				if(f.getValue().equals(this.args.get(2))) {
+					nr.addTuple(t.getFields());
+				}
+				break;
+
+			default:
+				break;
+			}
+			
+			
+		
+		}
+		return nr;
+	}
+	
 	public Relation execute() {
 		Relation nr = null;
 		switch (op) {
 		case "projection":
-			nr = new Unary(sc);
-
-			for(Tuple t : r.getTuples()) {
-				ArrayList<Field> lf = new ArrayList<Field>();
-				try {
-					lf.add(new Field(sc.getAttributesByName("id"),new IntegerBD(nr.getCnt() )));
-				} catch (DifferentTypeException e) {
-					e.printStackTrace();
-				}
-
-				for(Attribute a : sc.getAttributes()) {
-
-					if(t.getFieldByAttribute(a) != null) {
-
-
-						Field f = null;
-
-						f = new Field(t.getFieldByAttribute(a),a);
-						lf.add(f);
-					}
-				}
-
-				nr.addTuple(lf);
-			}
-
+			nr = this.projection(nr);
 			break;
 
+		case "select" :
+			nr=this.projection(nr);
+			nr=this.selection(nr);
 		default:
 			break;
 		}
 		System.out.println("nr : "+nr.getTuples());
 		return nr;
 	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public Relation getRelation() {
+		return this.oldR;
+	}
+
+	
 }

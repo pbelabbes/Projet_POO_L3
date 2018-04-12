@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 import javax.management.AttributeNotFoundException;
 
+import kernel.relation.operator.Request;
+
 public class Schema {
 
 	private String name;
@@ -30,6 +32,13 @@ public class Schema {
 		this.primaryKey = new ArrayList<Attribute>();
 		this.primaryKey.add(primaryKey);
 	}
+	public Schema(Schema schema,Request r) {
+		this.name=name+r.getId();
+		this.attributes=schema.attributes;
+		this.primaryKey = r.getRelation().getPM();
+
+	}
+
 	public String getName() {
 		return this.name;
 	}
@@ -67,6 +76,10 @@ public class Schema {
 				e.printStackTrace();
 			}
 		return res;
+	}
+
+	public ArrayList<Attribute> getPM() {
+		return this.primaryKey;
 	}
 
 }
