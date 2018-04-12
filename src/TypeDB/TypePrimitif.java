@@ -1,5 +1,4 @@
-<<<<<<< HEAD:src/TypeDB/TypePrimitif.java
-package TypeBD;
+package TypeDB;
 
 import java.util.Comparator;
 

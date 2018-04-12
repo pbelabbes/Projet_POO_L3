@@ -13,10 +13,18 @@ public class ParseurXML {
 	// Nom du fichier à parser
 	String f;
 	
+	/**
+	 * Methode permettant d'initialiser le parseur
+	 * @param f de type string
+	 */
 	public ParseurXML(String f){
 		this.f = f;
 	}
-	// Retourne le nom de la BD
+	
+	/**
+	 * Methode permettant de retourner le nom de la BD
+	 * @return Nom : nom de la bd
+	 */
 	public String getNom() {
 		String Nom = "";
 		InputStream s;
@@ -35,20 +43,25 @@ public class ParseurXML {
 		}
 		return Nom;
 	}
-		
-	// retourne une String au format : "nomAttribut typeAttribut "
+	
+	/**
+	 * Methode permettant de retourner une String au format : "nomAttribut typeAttribut "
+	 * @param sc de type Scanner
+	 * @return Attribut 
+	 */
 	public String getAttribut(Scanner sc) {
-		//System.out.println("INattribut");
 		String Attribut = sc.next() + " ";
 		sc.next();
 		Attribut += sc.next() + " ";
-		//System.out.println("Attribut : " + Attribut);
 		return Attribut;
 	}
-
-	// retourne une String au format : "name\nRelation"
+	
+	/**
+	 * Methode permettant de retourner une String au format : "name\nRelation"
+	 * @param name de type String
+	 * @return Relation 
+	 */
 	public String getRelation(String name) {
-		//System.out.println("INrelation");
 		String Relation = name + " : ";
 		InputStream s;
 		try {
@@ -73,8 +86,11 @@ public class ParseurXML {
 		return Relation;
 	}
 	
-	
-	// retourne un tableau de nom de relation"
+	/**
+	 * Methode permettant de retourner un tableau de nom de relation"
+	 * @param sc de type Scanner
+	 * @return Relation 
+	 */
 	public String[] getNomRelations(Scanner sc) {
 		List<String> listeRelations = new ArrayList<String>();
 		while(sc.hasNextLine()) {
@@ -88,7 +104,10 @@ public class ParseurXML {
 		return Relations;
 	}
 	
-	// retourne une String du format : "Nom\nRelations"
+	/**
+	 * Methode permettant de retourner une String du format : "Nom\nRelations"
+	 * @return Relation 
+	 */
 	public String getBD() {
 		String BD = "";
 		try {
@@ -111,14 +130,21 @@ public class ParseurXML {
 		return BD;
 	}
 	
-	//place le Scanner devant le nom suivant si il n'y est pas 
+	/**
+	 * Methode permettant de placer le Scanner devant le nom suivant si il n'y est pas 
+	 * @param sc de type Scanner
+	 */
 	public void goTo_name(Scanner sc) {
 		if(!sc.hasNext(".*name")) {
 			while(!sc.next().contains("name=")) {
 			}
 		}
 	}
-	//place le Scanner devant le nom suivant si il n'y est pas 
+	
+	/**
+	 * Methode permettant de placer le Scanner devant le nom suivant si il n'y est pas 
+	 * @param sc de type Scanner
+	 */
 		public void goTo_relationName(Scanner sc) {
 			if(!sc.hasNext(".*\n.*\n.*Relation name")) {
 				while(sc.hasNextLine() && !sc.next().contains("Relation name=")) {

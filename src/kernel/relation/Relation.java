@@ -79,11 +79,19 @@ public abstract class Relation {
 		}
 		
 	}
-
+	
+	/**
+	 * Methode permettant de recuperer le nom de l'attibut
+	 * @return name de type string : le nom de la relation
+	 */
 	public Attribute getAttributeByName(String name) {
 		return this.schema.getAttributesByName(name);
 	}
-
+	
+	/**
+	 * Methode permettant de recuperer numero de tuple
+	 * @return cntTuple de type int
+	 */
 	public int getCnt() {
 		return this.cntTuple;
 	}
